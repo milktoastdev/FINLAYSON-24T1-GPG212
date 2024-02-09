@@ -40,14 +40,13 @@ public class MenuController : MonoBehaviour
     
     void Update()
     {
-        // Currently it's doing both within the frame
-        if (Input.GetKeyDown(KeyCode.Escape) && currentMenuState == menuOffState)
-        {
-            ChangeMenuState(menuOnState);
-        }
-        else
+        if (Input.GetKeyDown(KeyCode.Escape) && currentMenuState != menuOffState)
         {
             ChangeMenuState(menuOffState);
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) && currentMenuState != menuOnState)
+        {
+            ChangeMenuState(menuOnState);
         }
     }
 }

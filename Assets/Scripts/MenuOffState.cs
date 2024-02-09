@@ -1,18 +1,22 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class MenuOffState : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public TextMeshProUGUI menuTextMeshProUGUI;
+    void OnEnable()
     {
-        
+        menuTextMeshProUGUI.enabled = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+    }
+
+    private void OnDisable()
+    {
     }
 }

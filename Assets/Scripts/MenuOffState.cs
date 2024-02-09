@@ -7,9 +7,12 @@ using UnityEngine;
 public class MenuOffState : MonoBehaviour
 {
     public TextMeshProUGUI menuTextMeshProUGUI;
+    public AudioLowPassFilter menuLowPassFilter;
+
     void OnEnable()
     {
         menuTextMeshProUGUI.enabled = false;
+        menuLowPassFilter.enabled = false;
     }
 
     void Update()
@@ -18,5 +21,6 @@ public class MenuOffState : MonoBehaviour
 
     private void OnDisable()
     {
+        // Play an enter menu sound
     }
 }

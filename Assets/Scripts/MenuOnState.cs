@@ -6,9 +6,11 @@ using UnityEngine;
 public class MenuOnState : MonoBehaviour
 {
     public TextMeshProUGUI menuTextMeshProUGUI;
+    public AudioLowPassFilter menuLowPassFilter;
     void OnEnable()
     {
         menuTextMeshProUGUI.enabled = true;
+        menuLowPassFilter.enabled = true;
     }
 
     void Update()
@@ -17,5 +19,8 @@ public class MenuOnState : MonoBehaviour
 
     private void OnDisable()
     {
+        // Cut menu music
+        
+        // Play an exit menu sound
     }
 }

@@ -3,16 +3,21 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class MenuOnState : MonoBehaviour
+public class MenuOnState : StateBase
 {
     public TextMeshProUGUI menuTextMeshProUGUI;
     public AudioLowPassFilter menuLowPassFilter;
     void OnEnable()
     {
+        Enter();
+    }
+
+    public override void Enter()
+    {
         menuTextMeshProUGUI.enabled = true;
         menuLowPassFilter.enabled = true;
     }
-
+    
     void Update()
     {
     }
@@ -23,4 +28,6 @@ public class MenuOnState : MonoBehaviour
         
         // Play an exit menu sound
     }
+
+    
 }

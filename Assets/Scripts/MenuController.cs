@@ -6,11 +6,11 @@ using UnityEngine.XR;
 
 public class MenuController : MonoBehaviour
 {
-    public MonoBehaviour defaultMenuState;
-    public MonoBehaviour currentMenuState;
+    public StateBase defaultMenuState;
+    public StateBase currentMenuState;
 
-    public MonoBehaviour menuOnState;
-    public MonoBehaviour menuOffState;
+    public StateBase menuOnState;
+    public StateBase menuOffState;
 
     void Start()
     {
@@ -19,7 +19,7 @@ public class MenuController : MonoBehaviour
     }
     
     // This works for *any* state
-    public void ChangeMenuState(MonoBehaviour newMenuState)
+    public void ChangeMenuState(StateBase newMenuState)
     {
         if (newMenuState == currentMenuState)
         {
@@ -48,5 +48,7 @@ public class MenuController : MonoBehaviour
         {
             ChangeMenuState(menuOnState);
         }
-    }
+    } 
+    
+    
 }

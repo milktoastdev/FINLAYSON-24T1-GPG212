@@ -4,12 +4,17 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class MenuOffState : MonoBehaviour
+public class MenuOffState : StateBase
 {
     public TextMeshProUGUI menuTextMeshProUGUI;
     public AudioLowPassFilter menuLowPassFilter;
 
     void OnEnable()
+    {
+        Enter();
+    }
+
+    public override void Enter()
     {
         menuTextMeshProUGUI.enabled = false;
         menuLowPassFilter.enabled = false;

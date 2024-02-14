@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-public class GameManager : SerializedMonoBehaviour, ICharacter
+public class GameManager : SerializedMonoBehaviour
 {
     public void SelectedCharacter()
     {

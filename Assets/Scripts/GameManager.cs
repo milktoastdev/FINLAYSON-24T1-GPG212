@@ -5,5 +5,9 @@ using UnityEngine;
 
 public class GameManager : SerializedMonoBehaviour, ICharacter
 {
+    public void SelectedCharacter()
+    {
+    }
+    
     
 }

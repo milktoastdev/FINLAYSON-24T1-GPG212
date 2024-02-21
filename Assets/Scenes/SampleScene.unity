@@ -1529,14 +1529,7 @@ MonoBehaviour:
   moveRight: 275
   moveJump: 273
   moveSquat: 274
-  moveSpeed: 5
-  attackPunch: 0
-  attackKick: 0
-  attackSpecial: 0
-  attackUltimate: 0
-  totalHealth: 0
-  attackDamage: 0
-  characterbase: {fileID: 0}
+  moveSpeed: 7
 --- !u!1 &1794862448
 GameObject:
   m_ObjectHideFlags: 0
@@ -1763,7 +1756,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4cce5c6969ac7e94984fee6e99c710ef, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 1
   Mute: 0

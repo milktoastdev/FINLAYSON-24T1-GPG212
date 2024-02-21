@@ -41,25 +41,21 @@ public class PlayerPoultry : SerializedMonoBehaviour, IIdentity, IHealth
     {
         return myPlayer;
     }
+    
+    public float Health { get; set; }
 
-    public void SetHealth(float health)
-    {
-    }
-
-    public void GetHealth(float health)
-    {
-    }
-
-    public void Damaged(float amount)
+    public float Damaged(float amount)
     {
         // Calculate Damage
         // Apply Damage
+        return amount;
     }
-
-    public void Healed(float amount)
+    
+    public float Healed(float amount)
     {
         // Calculate Healing
         // Apply healing
+        return amount;
     }
 
     public void Defeated()

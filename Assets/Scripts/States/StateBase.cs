@@ -9,16 +9,16 @@ public class StateBase : MonoBehaviour
     
     public virtual void Enter()
     {
-        Debug.Log("Default virtual Enter");
+        Debug.Log("Default virtual void Enter");
     }
 
     public virtual void Execute()
     {
-        Debug.Log("Default virtual Execute");
+        Debug.Log("Default virtual void Execute");
     }
 
     public virtual void Exit()
     {
-        Debug.Log("Default virtual Exit");        
+        Debug.Log("Default virtual void Exit");        
     }
 }

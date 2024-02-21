@@ -158,7 +158,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
 --- !u!114 &148458831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,11 +171,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -217,6 +217,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 963194228}
   - {fileID: 1493492443}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -324,8 +325,8 @@ Transform:
   m_GameObject: {fileID: 212371939}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3400, y: 82, z: -711}
-  m_LocalScale: {x: 47.44418, y: 47.44418, z: 47.44418}
+  m_LocalPosition: {x: -3258, y: 61.851, z: -711}
+  m_LocalScale: {x: 111.17595, y: 111.17595, z: 111.17595}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 399805322}
@@ -494,8 +495,8 @@ Transform:
   m_GameObject: {fileID: 599292481}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3187.2217, y: 5, z: -672.092}
-  m_LocalScale: {x: 250.79, y: 250.79, z: 250.79}
+  m_LocalPosition: {x: -3187.2217, y: 5, z: -672.09}
+  m_LocalScale: {x: 432.61273, y: 432.61273, z: 432.61273}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -1130,7 +1131,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 84.986
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -1156,13 +1157,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.04836417, y: -0, z: -0, w: 0.9988298}
-  m_LocalPosition: {x: -3313, y: 223, z: -1375}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6451.1416, y: -71, z: -2228}
+  m_LocalScale: {x: 1.826484, y: 1.8264842, z: 1.8264842}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 5.544, y: 0, z: 0}
+  m_Father: {fileID: 148458833}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1301493878
 GameObject:
   m_ObjectHideFlags: 0
@@ -1196,6 +1197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuTextMeshProUGUI: {fileID: 1493492444}
   menuLowPassFilter: {fileID: 1883211550}
+  menuHighPassFilter: {fileID: 1883211551}
 --- !u!114 &1301493880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1210,6 +1212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuTextMeshProUGUI: {fileID: 1493492444}
   menuLowPassFilter: {fileID: 1883211550}
+  menuHighPassFilter: {fileID: 1883211551}
 --- !u!114 &1301493881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1478,8 +1481,8 @@ Transform:
   m_GameObject: {fileID: 1669223011}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3554, y: 97, z: -711}
-  m_LocalScale: {x: 43.793297, y: 43.793297, z: 43.793297}
+  m_LocalPosition: {x: -3618.9, y: 97, z: -711}
+  m_LocalScale: {x: 102.620834, y: 102.620834, z: 102.620834}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 433868052}
@@ -1525,6 +1528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c81c62497822c844faad17909f0dae0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canMove: 0
   moveLeft: 276
   moveRight: 275
   moveJump: 273
@@ -1737,6 +1741,7 @@ GameObject:
   - component: {fileID: 1883211549}
   - component: {fileID: 1883211548}
   - component: {fileID: 1883211550}
+  - component: {fileID: 1883211551}
   m_Layer: 0
   m_Name: Audio Source_Menu
   m_TagString: Untagged
@@ -1756,7 +1761,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4cce5c6969ac7e94984fee6e99c710ef, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.25
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1870,7 +1875,7 @@ AudioLowPassFilter:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.22727273
+      value: 0.062301047
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1880,6 +1885,16 @@ AudioLowPassFilter:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!165 &1883211551
+AudioHighPassFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1883211547}
+  m_Enabled: 1
+  m_CutoffFrequency: 808
+  m_HighpassResonanceQ: 1
 --- !u!1 &1989176994
 GameObject:
   m_ObjectHideFlags: 0
@@ -1916,7 +1931,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 683625959}
-  - {fileID: 963194228}
   - {fileID: 705507995}
   - {fileID: 148458833}
   - {fileID: 809345348}

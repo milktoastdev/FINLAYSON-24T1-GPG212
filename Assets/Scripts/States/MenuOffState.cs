@@ -8,8 +8,9 @@ public class MenuOffState : StateBase
 {
     public TextMeshProUGUI menuTextMeshProUGUI;
     public AudioLowPassFilter menuLowPassFilter;
-
-    void OnEnable()
+    public AudioHighPassFilter menuHighPassFilter;
+    
+    public void OnEnable()
     {
         Enter();
     }
@@ -18,14 +19,29 @@ public class MenuOffState : StateBase
     {
         menuTextMeshProUGUI.enabled = false;
         menuLowPassFilter.enabled = false;
+        menuHighPassFilter.enabled = false;
     }
 
-    void Update()
+    public void Update()
     {
     }
 
-    private void OnDisable()
+    public void FixedUpdate()
     {
-        // Play an enter menu sound
+    }
+
+    public override void Execute()
+    {
+        
+    }
+
+    public void OnDisable()
+    {
+        Exit();
+    }
+
+    public override void Exit()
+    {
+        // Play an exit menu sound
     }
 }

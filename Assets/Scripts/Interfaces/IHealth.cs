@@ -1,17 +1,22 @@
+/*
+public delegate void IHealthDelegateEvent();
+
+public event IHealthDelegateEvent PlayerDefeated;
+
+public void OnPlayerDefeated()
+{
+    PlayerDefeated?.Invoke();
+}
+*/
 public interface IHealth
 {
-    // Set starting health
-    public void SetHealth(float health);
-    
-    // Get current health
-    public void GetHealth(float health);
-    
+    public float Health { get; set; }
+
     // Calculate & apply damage
-    public void Damaged(float amount);
-    
+    public float Damaged(float amount);
+
     // Calculate & apply healing
-    public void Healed(float amount);
-    
-    // Defeat player character or summoned creature
+    public float Healed(float amount);
+
     public void Defeated();
 }

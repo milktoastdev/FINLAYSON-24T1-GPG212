@@ -1,3 +1,9 @@
+public enum PlayerTypes
+{
+  Character,
+  Poultry
+}
+
 public interface IIdentity
 {
  public string GetName(string myName);

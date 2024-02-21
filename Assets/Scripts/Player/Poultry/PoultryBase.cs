@@ -5,13 +5,12 @@ using UnityEngine;
 
 public class PoultryBase : MonoBehaviour
 {
-    public void OnEnable()
-    {
-        
-    }
+    public delegate void SimplePoultryDelegateEvent();
 
-    public void OnDisable()
+    public event SimplePoultryDelegateEvent OnPeck;
+
+    public void OnPeckAttack()
     {
-        
+        OnPeck?.Invoke();
     }
 }

@@ -5,14 +5,25 @@ using UnityEngine;
 
 public class PlayerPoultry : SerializedMonoBehaviour, IIdentity, IHealth
 {
+    public PoultryBase poultryBase;
+
+    public KeyCode attackPeck;
+    
     public void OnEnable()
     {
-        
+        // Subscribing ("setting up")
+        poultryBase.OnPeck += PeckAttack;
+    }
+
+    private void PeckAttack()
+    {
+        Debug.Log("I pecked!");
     }
 
     public void OnDisable()
     {
-        
+        // Unsubscribing ("cleaning up")
+        poultryBase.OnPeck -= PeckAttack;
     }
 
     public string GetName(string myName)
@@ -25,7 +36,12 @@ public class PlayerPoultry : SerializedMonoBehaviour, IIdentity, IHealth
         myType = "Poultry";
         return myType;
     }
-    
+
+    public int GetPlayer(int myPlayer)
+    {
+        return myPlayer;
+    }
+
     public void SetHealth(float health)
     {
     }

@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class GameManager : SerializedMonoBehaviour
 {
+    public List<PlayerCharacter> playerCharacters;
+    public List<PlayerPoultry> playerPoultries;
+    
     public void SelectedCharacter()
     {
     }

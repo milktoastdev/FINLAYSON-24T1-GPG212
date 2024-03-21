@@ -24,16 +24,24 @@ public class MenuOnState : StateBase
     
     public void Update()
     {
-    }
-
-    public void FixedUpdate()
-    {
+        Execute();
     }
 
     public override void Execute()
     {
+        
     }
 
+    public void FixedUpdate()
+    {
+        FixedExecute();
+    }
+
+    public override void FixedExecute()
+    {
+        
+    }
+    
     public void OnDisable()
     {
         Exit();

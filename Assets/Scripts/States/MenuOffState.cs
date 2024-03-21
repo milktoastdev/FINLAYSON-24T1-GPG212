@@ -15,13 +15,6 @@ public class MenuOffState : StateBase
         Enter();
     }
 
-    public override void Enter()
-    {
-        menuTextMeshProUGUI.enabled = false;
-        menuLowPassFilter.enabled = false;
-        menuHighPassFilter.enabled = false;
-    }
-
     public void Update()
     {
     }
@@ -30,18 +23,29 @@ public class MenuOffState : StateBase
     {
     }
 
-    public override void Execute()
-    {
-        
-    }
-
     public void OnDisable()
     {
         Exit();
     }
+    
+    public override void Enter()
+    {
+        base.Enter();
+        
+        menuTextMeshProUGUI.enabled = false;
+        menuLowPassFilter.enabled = false;
+        menuHighPassFilter.enabled = false;
+    }
+    
+    public override void Execute()
+    {
+        base.Execute();
+    }
 
     public override void Exit()
     {
+        base.Exit();
+        
         // Play an exit menu sound
     }
 }

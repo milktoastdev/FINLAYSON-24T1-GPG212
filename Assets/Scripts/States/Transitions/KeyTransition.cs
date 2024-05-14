@@ -1,26 +1,58 @@
+using System;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 /// <summary>
-/// Generic transition script for KEY transitions
+/// Generic transition script for KEY transitions.
 /// </summary>
 public class KeyTransition : MonoBehaviour
 {
-    public Dictionary<KeyCode, StateBase> transitionDatabase;
+    public Dictionary<KeyCode, StateBase> transitionDatabase = new Dictionary<KeyCode, StateBase>();
 
     public StateManager stateManager;
+    public FighterController fighterController;
     public StateBase timeoutState;
-    
-    public KeyCode keyCode;
+
+    public KeyCode keyPressed;
+    public KeyCode keyHeld;
     
     public void Transition(StateBase targetState)
     {
         stateManager.ChangeState(targetState);
     }
     
+    public void TimedTransition(StateBase targetState, Timer timer, StateBase defaultState)
+    {
+        // TODO: Set Time.Timescale to a fraction of a second for slowmo effect
+    }
+
+    private void Awake()
+    {
+        // TODO: Add states to dictionary.
+        // transitionDatabase.Add(fighterController.leftMove,LeftMoveEvent???????);
+    }
+
+    /// <summary>
+    /// Checks for inputs.
+    /// Calls relevant transition function where needed AND possible.
+    /// </summary>
+    private void FixedUpdate()
+    {
+        // Pressing a key --> checks if it's in the dictionary first.
+        if (Input.GetKeyDown(keyPressed) && transitionDatabase[keyPressed] != null)
+        {
+            Transition(transitionDatabase[keyPressed]);
+        }
+        // Holding a key down --> checks if it's in the dictionary first.
+        if (Input.GetKey(keyHeld) && transitionDatabase[keyHeld] != null)
+        {
+            Transition(transitionDatabase[keyHeld]);
+        }
+    }
     // timeout for combos
     // punches as states become iterations of each other
     // punch

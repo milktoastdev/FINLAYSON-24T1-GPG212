@@ -10,6 +10,7 @@ public class SaveManager : MonoBehaviour
     /// <summary>
     /// Reference fields chosen by the player.
     /// Player declares their name in an input field.
+    /// TODO: Players unable to choose the same name as someone else
     /// Player can rotate through colours in the pause menu.
     /// </summary>
     public string playerName;
@@ -44,8 +45,8 @@ public class SaveManager : MonoBehaviour
         // Editors work outside of play mode. This ensures nothing gets saved while the game isn't running.
         if (Application.isPlaying)
         {
-            PlayerPrefs.GetString("PlayerName","Player");
-            PlayerPrefs.GetString("PlayerColour","Grey");
+            playerName = PlayerPrefs.GetString("PlayerName","Player");
+            playerColour = PlayerPrefs.GetString("PlayerColour","Grey");
         }
     }
 }

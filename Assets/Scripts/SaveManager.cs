@@ -3,47 +3,48 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Holds the functions for saving and loading.
+/// Manages the saving and loading of player preferences set while the game is running (NOT outside of play mode).
 /// </summary>
 public class SaveManager : MonoBehaviour
 {
-    // JSON the fuck outta this!
-    // File Systems --> Cam Doc
-    
+    /// <summary>
+    /// Reference fields chosen by the player.
+    /// Player declares their name in an input field.
+    /// Player can rotate through colours in the pause menu.
+    /// </summary>
     public string playerName;
     public string playerColour;
-    // Volume settings
-    // Score / Highscore
-    // Input settings (keyboard/gamepad)
+    
+    // TODO: Input Preferences (Keybinds, etc)
+    
+    // TODO: Volume Settings
+    
+    // TODO: Save Score & Highscore
     
     /// <summary>
-    /// Saving data using player prefs
+    /// Saving data using player prefs.
     /// </summary>
     public void SavePlayerPrefs()
     {
-        // Editors work outside of play mode. That's scary.
+        // Editors work outside of play mode. This ensures nothing gets saved while the game isn't running.
         if (Application.isPlaying)
         {
-            // This should be chosen using an input field in a menu
-            // Using a dictionary, not just because its the only thing playerprefs accepts, but for a key!
-            // Arrays & lists look shit up using an index (number)
-            // Dictionaries look shit up by looking up the thing itself!
-            // Both are useful & have different purposes and usages
-            // In dictionaries, you have to declare the KEY, then the VALUE
+            // Container used by PlayerPrefs is a dictionary.
+            // Lists and arrays use an index (number) to look things up, dictionaries use a KEY, then the VALUE.
             PlayerPrefs.SetString("PlayerName",playerName);
             PlayerPrefs.SetString("PlayerColour",playerColour);
         }
     }
 
     /// <summary>
-    /// Loading data using player prefs
+    /// Loading data using player prefs.
     /// </summary>
     public void LoadPlayerPrefs()
     {
-        // Editors work outside of play mode. That's scary.
+        // Editors work outside of play mode. This ensures nothing gets saved while the game isn't running.
         if (Application.isPlaying)
         {
-            PlayerPrefs.GetString("PlayerName","PLAYER");
+            PlayerPrefs.GetString("PlayerName","Player");
             PlayerPrefs.GetString("PlayerColour","Grey");
         }
     }

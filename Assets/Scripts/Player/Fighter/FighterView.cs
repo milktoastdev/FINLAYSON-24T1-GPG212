@@ -2,16 +2,47 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
+/// <summary>
+/// Representation of the fighter to the player.
+/// Has no impact on gameplay.
+/// </summary>
 public class FighterView : MonoBehaviour
 {
+    // Toggles debug logging.
+    // Only set in inspector.
     public bool debug;
     
     public FighterBase fighterBase;
     
-    public SpriteRenderer spriteRenderer;
+    /// <summary>
+    /// Each part of the sprite is separated for colouring & tweening (animation) purposes.
+    /// </summary>
+    public SpriteRenderer fillSpriteRenderer; 
+    public SpriteRenderer bodySpriteRenderer;
+    public SpriteRenderer eyeSpriteRenderer;
 
-    // These are placeholders for final sprites
+    // Body colour sprites.
+    public Sprite fillSprite;
+    public Sprite squatFillSprite;
+    // Body outline sprites.
+    public Sprite bodySprite;
+    public Sprite squatBodySprite;
+    // Eye sprites.
+    // TODO: Perlin noise while idle x2: 1 for blinking, the other for eye movement (direction & lingering time)
+    public Sprite eyeSprite;
+    public Sprite squatEyeSprite;
+    public Sprite jumpEyeSprite;
+    
+    /// <summary>
+    /// The player can change this at the beginning of the match.
+    /// Players cannot have the same colour.
+    /// Colour options can be found in FighterBase.
+    /// </summary>
+    public Color fillColour;
+
+    // These are placeholders for movement testing!
     public Color fighterIdleColor;
     public Color fighterLeftColor;
     public Color fighterRightColor;
@@ -20,53 +51,79 @@ public class FighterView : MonoBehaviour
 
     public void OnEnable()
     {
-        debug = true;
-        
-        // Resetting sprite to default colour
-        spriteRenderer.color = fighterIdleColor;
+        if(debug)
+        {
+            // Resetting sprite to default colour.
+            fillSpriteRenderer.color = fighterIdleColor;
+            Debug.Log("VIEW is enabled.");
+        }
         
         // Subscribing to movement events ("setting up")
-        fighterBase.OnLeft += LeftMove;
-        fighterBase.OnRight += RightMove;
-        fighterBase.OnJump += JumpMove;
-        fighterBase.OnSquat += SquatMove;
+        fighterBase.LeftEvent += OnLeftEvent;
+        fighterBase.RightEvent += OnRightEvent;
+        fighterBase.JumpEvent += OnJumpEvent;
+        fighterBase.SquatEvent += OnSquatEvent;
     }
     
-    // These could be controlled through a ChangeColor(Color newColor) function
-    // I'm just doing hardcoded bullshit to make it work for now
-    public void LeftMove()
+    public void OnLeftEvent()
     {
-        spriteRenderer.color = fighterLeftColor;
+        // TODO: Eyes move left
+        
+        if (debug)
+        {
+            fillSpriteRenderer.color = fighterLeftColor;
+            Debug.Log("VIEW is moving left.");
+        }
     }
 
-    public void RightMove()
+    public void OnRightEvent()
     {
-        spriteRenderer.color = fighterRightColor;
+        // TODO: Eyes move right
+        
+        if (debug)
+        {
+            fillSpriteRenderer.color = fighterRightColor;
+            Debug.Log("VIEW is moving right.");
+        }
     }
 
-    public void JumpMove()
+    public void OnJumpEvent()
     {
-        spriteRenderer.color = fighterJumpColor;
+        eyeSpriteRenderer.sprite = jumpEyeSprite;
+        
+        // TODO: Swap eyes back to regular eyes on collision with the floor
+        
+        if (debug)
+        {
+            fillSpriteRenderer.color = fighterJumpColor;
+            Debug.Log("VIEW is jumping.");
+        }
     }
 
-    public void SquatMove()
+    public void OnSquatEvent()
     {
-        // Cube squish!
-        // Either change the cube's dimensions or swap the renderer, collider, etc. out
-        spriteRenderer.color = fighterSquatColor;
+        // TODO: Swap body sprite, eye sprite & fill sprite. Change size of collider.
+        
+        if (debug)
+        {
+            fillSpriteRenderer.color = fighterSquatColor;
+            Debug.Log("VIEW is squatting.");
+        }
     }
 
     public void OnDisable()
     {
         // Unsubscribing from movement events ("cleaning up")
-        fighterBase.OnLeft -= LeftMove;
-        fighterBase.OnRight -= RightMove;
-        fighterBase.OnJump -= JumpMove;
-        fighterBase.OnSquat -= SquatMove;
+        fighterBase.LeftEvent -= OnLeftEvent;
+        fighterBase.RightEvent -= OnRightEvent;
+        fighterBase.JumpEvent -= OnJumpEvent;
+        fighterBase.SquatEvent -= OnSquatEvent;
 
-        // Resetting sprite to default colour
-        spriteRenderer.color = fighterIdleColor;
-
-        debug = false;
+        if (debug)
+        {
+            // Resetting sprite to default colour.
+            fillSpriteRenderer.color = fighterIdleColor;
+            Debug.Log("VIEW is disabled.");
+        }
     }
 }

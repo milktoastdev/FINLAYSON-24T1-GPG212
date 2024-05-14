@@ -4,10 +4,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 
+/// <summary>
+/// Controls the generic transitioning between states
+/// </summary>
 public class StateManager : MonoBehaviour, IResettable
 {
     public StateBase startingState;
     public StateBase currentState;
+    public StateBase nextState;
+    
+    // was gonna put a transition event here
 
     // Works universally for all states
     public void ChangeState(StateBase newState)
@@ -45,12 +51,12 @@ public class StateManager : MonoBehaviour, IResettable
         // Subscribe to Done event
     }
 
-    public void ExecuteState()
+    public void Update()
     {
         currentState.Execute();
     }
 
-    public void FixedExecuteState()
+    public void FixedUpdate()
     {
         currentState.FixedExecute();
     }

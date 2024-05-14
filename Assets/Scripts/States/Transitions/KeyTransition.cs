@@ -1,33 +1,25 @@
-using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Generic transition script for KEY transitions
 /// </summary>
 public class KeyTransition : MonoBehaviour
 {
-    /// <summary>
-    /// StateManager script assigned in inspector.
-    /// </summary>
+    public Dictionary<KeyCode, StateBase> transitionDatabase;
+
     public StateManager stateManager;
-    
-    /// <summary>
-    /// Generic next state.
-    /// </summary>
-    public StateBase nextState;
-    
-    /// <summary>
-    /// Generic state for timed combos.
-    /// </summary>
     public StateBase timeoutState;
     
-    /// <summary>
-    /// Generic key input for transitions.
-    /// </summary>
     public KeyCode keyCode;
     
-    // generic transition to next state function
+    public void Transition(StateBase targetState)
+    {
+        stateManager.ChangeState(targetState);
+    }
     
     // timeout for combos
     // punches as states become iterations of each other
@@ -40,4 +32,7 @@ public class KeyTransition : MonoBehaviour
     // punch
     // uppercut
     // do these and show cam WITH transition (if statements & timers!)
+    
+    // TRANSITIONS!
+    // Example: SQUAT can go to left, right and idle depending on the input.
 }

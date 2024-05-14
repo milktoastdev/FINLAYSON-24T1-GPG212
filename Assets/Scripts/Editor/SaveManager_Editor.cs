@@ -9,7 +9,7 @@ using UnityEngine;
 /// <para>Editor for child classes is false because there will be no child classes.</para>
 /// </summary>
 [CustomEditor(typeof(SaveManager), false)]
-public class SaveManagerEditor : Editor
+public class SaveManager_Editor : Editor
 {
     /// <summary>
     /// <para>Draws the editor in the inspector.</para>

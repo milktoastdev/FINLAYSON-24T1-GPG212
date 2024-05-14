@@ -1,64 +1,106 @@
 using UnityEngine;
 
+/// <summary>
+/// Options for players to choose the body colour of their fighter character.
+/// Players should not be able to have the same colour.
+/// </summary>
+public enum FighterColour
+{
+    Grey,
+    Red,
+    Green,
+    Blue,
+    Yellow,
+    Orange,
+    Pink,
+    Purple
+}
+
+/// <summary>
+/// Base class for fighter character types.
+/// </summary>
 public class FighterBase : MonoBehaviour
 {
+    // Toggles debug logging.
+    // Only set in inspector.
+    public bool debug;
+    
     /// <summary>
-    /// Delegates (haha) the required parameters events of this type must use
-    /// All subscribers to this event must also having matching parameters
+    /// Delegates (haha) the required parameters events of this type must use.
+    /// All subscribers to this event must also have matching parameters.
+    /// In this case, there are no parameters.
     /// </summary>
     public delegate void SimpleFighterDelegateEvent();
 
+    // Movement events for fighter characters.
+    public event SimpleFighterDelegateEvent LeftEvent;
     /// <summary>
-    /// Movement Events for Fighter Characters
+    /// Invokes the left movement event.
     /// </summary>
-    public event SimpleFighterDelegateEvent OnLeft;
-    public void OnLeftMove()
+    public void OnLeftEvent()
     {
-        OnLeft?.Invoke();
+        LeftEvent?.Invoke();
+        if(debug) Debug.Log("Left event invoked.");
     }
 
-    public event SimpleFighterDelegateEvent OnRight;
-    public void OnRightMove()
+    public event SimpleFighterDelegateEvent RightEvent;
+    /// <summary>
+    /// Invokes the right movement event.
+    /// </summary>
+    public void OnRightEvent()
     {
-        OnRight?.Invoke();
+        RightEvent?.Invoke();
+        if(debug) Debug.Log("Right event invoked.");
     }
 
-    public event SimpleFighterDelegateEvent OnJump;
-    public void OnJumpMove()
+    public event SimpleFighterDelegateEvent JumpEvent;
+    /// <summary>
+    /// Invokes the jump event.
+    /// </summary>
+    public void OnJumpEvent()
     {
-        OnJump?.Invoke();
+        JumpEvent?.Invoke();
+        if(debug) Debug.Log("Jump event invoked.");
     }
 
-    public event SimpleFighterDelegateEvent OnSquat;
-    public void OnSquatMove()
+    public event SimpleFighterDelegateEvent SquatEvent;
+    /// <summary>
+    /// Invokes the squat event.
+    /// </summary>
+    public void OnSquatEvent()
     {
-        OnSquat?.Invoke();
+        SquatEvent?.Invoke();
+        if(debug) Debug.Log("Squat event invoked.");
     }
     
+    // Attack events for fighter characters.
+    public event SimpleFighterDelegateEvent PunchEvent;
     /// <summary>
-    /// Attack Events for Fighter Characters
+    /// Invokes the punch event.
     /// </summary>
-    public event SimpleFighterDelegateEvent OnPunch;
-    public void OnPunchAttack()
+    public void OnPunchEvent()
     {
-        OnPunch?.Invoke();
+        PunchEvent?.Invoke();
+        if(debug) Debug.Log("Punch event invoked.");
     }
 
-    public event SimpleFighterDelegateEvent OnKick;
-    public void OnKickAttack()
+    public event SimpleFighterDelegateEvent ComboEvent;
+    /// <summary>
+    /// Invokes the combo event.
+    /// </summary>
+    public void OnComboEvent()
     {
-        OnKick?.Invoke();
+        ComboEvent?.Invoke();
+        if(debug) Debug.Log("Combo event invoked.");
     }
 
-    public event SimpleFighterDelegateEvent OnCombo;
-    public void OnComboAttack()
+    public event SimpleFighterDelegateEvent SummonEvent;
+    /// <summary>
+    /// Invokes the summon event.
+    /// </summary>
+    public void OnSummonEvent()
     {
-        OnCombo?.Invoke();
-    }
-
-    public event SimpleFighterDelegateEvent OnSummon;
-    public void OnSummonAttack()
-    {
-        OnSummon?.Invoke();
+        SummonEvent?.Invoke();
+        if(debug) Debug.Log("Summon event invoked.");
     }
 }

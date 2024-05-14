@@ -1,94 +1,90 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public enum FighterCharacters
-{
-    Placeholder0,
-    Placeholder1
-}
-
+/// <summary>
+/// Stores the fighter character's data.
+/// </summary>
 public class FighterModel : MonoBehaviour
 {
+    // Toggles debug logging.
+    // Only set in inspector.
     public bool debug;
     
-    public FighterBase fighterBase;
+    public FighterBase fighter;
+
+    /// <summary>
+    /// Determine if the instructions given by the FighterController can be executed here.
+    /// </summary>
+    // TODO: Link these up to transitions!
+    public bool canMove;
+    public bool canJump;
+    public bool canAttack;
+    public bool canSummon;
     
     public void OnEnable()
     {
-        debug = true;
-        
         // Subscribing to movement events ("setting up")
-        fighterBase.OnLeft += LeftMove;
-        fighterBase.OnRight += RightMove;
-        fighterBase.OnJump += JumpMove;
-        fighterBase.OnSquat += SquatMove;
+        fighter.LeftEvent += OnLeftEvent;
+        fighter.RightEvent += OnRightEvent;
+        // TODO: OnLandEvent? When you collide with the ground, makes canJump true again
+        fighter.JumpEvent += OnJumpEvent;
+        // TODO: Coroutine? Starts on get key, ends when key is released. Maybe triggers a DIFFERENT event :0
+        fighter.SquatEvent += OnSquatEvent;
         
         // Subscribing to attack events ("setting up")
-        fighterBase.OnPunch += PunchAttack;
-        fighterBase.OnKick += KickAttack;
-        fighterBase.OnCombo += ComboAttack;
-        fighterBase.OnSummon += SummonAttack;
+        fighter.PunchEvent += OnPunchEvent;
+        fighter.ComboEvent += OnComboEvent;
+        fighter.SummonEvent += OnSummonEvent;
     }
 
-    /// <summary>
-    /// Movement Event Functions
-    /// </summary>
-    public void LeftMove()
+    // Movement event functions.
+    public void OnLeftEvent()
     {
-        if(debug) Debug.Log("Moving left!");
+        if(debug) Debug.Log("MODEL is moving left.");
     }
 
-    public void RightMove()
+    public void OnRightEvent()
     {
-        if(debug) Debug.Log("Moving right!");
+        if(debug) Debug.Log("MODEL is moving right.");
     }
 
-    public void JumpMove()
+    public void OnJumpEvent()
     {
-        if(debug) Debug.Log("Jumping!");
+        if(debug) Debug.Log("MODEL is jumping.");
     }
 
-    public void SquatMove()
+    public void OnSquatEvent()
     {
-        if(debug) Debug.Log("Squatting!");
+        if(debug) Debug.Log("MODEL is squatting.");
     }
     
-    /// <summary>
-    /// Attack Event Functions
-    /// </summary>
-    public void PunchAttack()
+    // Attack Event functions.
+    public void OnPunchEvent()
     {
-        if(debug) Debug.Log("I punched!");
+        if(debug) Debug.Log("MODEL is punching.");
     }
 
-    public void KickAttack()
+    public void OnComboEvent()
     {
-        if(debug) Debug.Log("I kicked!");
+        if(debug) Debug.Log("MODEL is combo-ing.");
     }
 
-    public void ComboAttack()
+    public void OnSummonEvent()
     {
-        if(debug) Debug.Log("I combo-ed!");
-    }
-
-    public void SummonAttack()
-    {
-        if(debug) Debug.Log("I summoned!");
+        if(debug) Debug.Log("MODEL is summoning.");
     }
 
     public void OnDisable()
     {
         // Unsubscribing from movement events ("cleaning up")
-        fighterBase.OnLeft -= LeftMove;
-        fighterBase.OnRight -= RightMove;
-        fighterBase.OnJump -= JumpMove;
-        fighterBase.OnSquat -= SquatMove;
+        fighter.LeftEvent -= OnLeftEvent;
+        fighter.RightEvent -= OnRightEvent;
+        fighter.JumpEvent -= OnJumpEvent;
+        fighter.SquatEvent -= OnSquatEvent;
         
         // Unsubscribing from attack events ("cleaning up")
-        fighterBase.OnPunch -= PunchAttack;
-        fighterBase.OnKick -= KickAttack;
-        fighterBase.OnCombo -= ComboAttack;
-        fighterBase.OnSummon -= SummonAttack;
-
-        debug = false;
+        fighter.PunchEvent -= OnPunchEvent;
+        fighter.ComboEvent -= OnComboEvent;
+        fighter.SummonEvent -= OnSummonEvent;
     }
 }

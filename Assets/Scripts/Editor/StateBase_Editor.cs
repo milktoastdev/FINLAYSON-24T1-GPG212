@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 
 [CustomEditor(typeof(StateBase),true)]
-public class OLDStateBase_Editor : Editor
+public class StateBase_Editor : Editor
 {
     public override void OnInspectorGUI()
     {

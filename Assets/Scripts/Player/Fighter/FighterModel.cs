@@ -6,10 +6,14 @@ using UnityEngine.Serialization;
 /// </summary>
 public class FighterModel : MonoBehaviour
 {
-    // Toggles debug logging.
-    // Only set in inspector.
+    /// <summary>
+    /// Debug.Logs are written when this is true.
+    /// </summary>
     public bool debug;
     
+    /// <summary>
+    /// Refers to the fighter base in the inspector for event subscribing.
+    /// </summary>
     public FighterBase fighter;
 
     /// <summary>
@@ -21,6 +25,9 @@ public class FighterModel : MonoBehaviour
     public bool canAttack;
     public bool canSummon;
     
+    /// <summary>
+    /// Subscribes to fighter's events.
+    /// </summary>
     public void OnEnable()
     {
         // Subscribing to movement events ("setting up")
@@ -37,7 +44,10 @@ public class FighterModel : MonoBehaviour
         fighter.SummonEvent += OnSummonEvent;
     }
 
-    // Movement event functions.
+    /// <summary>
+    /// Functions to be called on each event.
+    /// </summary>
+    
     public void OnLeftEvent()
     {
         if(debug) Debug.Log("MODEL is moving left.");
@@ -74,6 +84,9 @@ public class FighterModel : MonoBehaviour
         if(debug) Debug.Log("MODEL is summoning.");
     }
 
+    /// <summary>
+    /// Unsubscribes from fighter's events.
+    /// </summary>
     public void OnDisable()
     {
         // Unsubscribing from movement events ("cleaning up")

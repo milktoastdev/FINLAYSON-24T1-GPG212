@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,23 +8,63 @@ using UnityEngine;
 /// </summary>
 public class SaveManager : MonoBehaviour
 {
+    // TODO: Editor buttons for testing.
+    // TODO: Proper buttons for in-game functionality.
+    // TODO: Events for in-game functionality.
+    
+    // TODO: Implement Functionality
+    // TODO: Players unable to choose the same name as someone else
     /// <summary>
     /// Reference fields chosen by the player.
     /// Player declares their name in an input field.
-    /// TODO: Players unable to choose the same name as someone else
     /// Player can rotate through colours in the pause menu.
     /// </summary>
     public string playerName;
     public string playerColour;
     
-    // TODO: Input Preferences (Keybinds, etc)
+    // TODO: Implement Input Preferences (Keybinds, etc) & Functionality
     
-    // TODO: Volume Settings
+    // TODO: Implement Functionality
+    /// <summary>
+    /// Master volume of the game as a percentage.
+    /// </summary>
+    public float masterVolume;
     
-    // TODO: Save Score & Highscore
-    
+    // TODO: Implement Functionality
+    /// <summary>
+    /// Containers for the player's current score this round & their all-time high score.
+    /// </summary>
+    public int playerScore;
+    public int playerHighScore;
+
+    /// <summary>
+    /// Subscribes to the player preferences updated event.
+    /// </summary>
+    public void OnEnable()
+    {
+        GameManager.Instance.PlayerPrefsUpdatedEvent += OnPlayerPrefsUpdated;
+    }
+
+    /// <summary>
+    /// Unsubscribes from the player preferences updated event.
+    /// </summary>
+    public void OnDisable()
+    {
+        GameManager.Instance.PlayerPrefsUpdatedEvent -= OnPlayerPrefsUpdated;
+    }
+
+    /// <summary>
+    /// Saves player preferences on the player preferences updated event.
+    /// </summary>
+    public void OnPlayerPrefsUpdated(Player player)
+    {
+        // TODO: Make this actually save *individual* player preferences.
+        SavePlayerPrefs();
+    }
+
     /// <summary>
     /// Saving data using player prefs.
+    /// SETS the player name, colour, score, high score and master volume.
     /// </summary>
     public void SavePlayerPrefs()
     {
@@ -34,11 +75,15 @@ public class SaveManager : MonoBehaviour
             // Lists and arrays use an index (number) to look things up, dictionaries use a KEY, then the VALUE.
             PlayerPrefs.SetString("PlayerName",playerName);
             PlayerPrefs.SetString("PlayerColour",playerColour);
+            PlayerPrefs.SetInt("PlayerScore",playerScore);
+            PlayerPrefs.SetInt("PlayerHighScore",playerHighScore);
+            PlayerPrefs.SetFloat("MasterVolume",masterVolume);
         }
     }
 
     /// <summary>
     /// Loading data using player prefs.
+    /// GETS the player name, colour, score, high score and master volume.
     /// </summary>
     public void LoadPlayerPrefs()
     {
@@ -47,6 +92,9 @@ public class SaveManager : MonoBehaviour
         {
             playerName = PlayerPrefs.GetString("PlayerName","Player");
             playerColour = PlayerPrefs.GetString("PlayerColour","Grey");
+            playerScore = PlayerPrefs.GetInt("PlayerScore",0);
+            playerHighScore = PlayerPrefs.GetInt("PlayerHighScore",0);
+            masterVolume = PlayerPrefs.GetFloat("MasterVolume",1.0f);
         }
     }
 }

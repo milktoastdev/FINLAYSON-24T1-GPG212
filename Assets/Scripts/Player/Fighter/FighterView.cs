@@ -10,10 +10,14 @@ using UnityEngine.Serialization;
 /// </summary>
 public class FighterView : MonoBehaviour
 {
-    // Toggles debug logging.
-    // Only set in inspector.
+    /// <summary>
+    /// Debug.Logs are written when this is true.
+    /// </summary>
     public bool debug;
     
+    /// <summary>
+    /// Refers to the fighter script in the inspector.
+    /// </summary>
     public FighterBase fighterBase;
     
     /// <summary>

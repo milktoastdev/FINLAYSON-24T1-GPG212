@@ -21,8 +21,9 @@ public enum FighterColour
 /// </summary>
 public class FighterBase : MonoBehaviour
 {
-    // Toggles debug logging.
-    // Only set in inspector.
+    /// <summary>
+    /// Debug.Logs are written when this is true.
+    /// </summary>
     public bool debug;
     
     /// <summary>
@@ -32,8 +33,11 @@ public class FighterBase : MonoBehaviour
     /// </summary>
     public delegate void SimpleFighterDelegateEvent();
 
-    // Movement events for fighter characters.
+    /// <summary>
+    ///  Declares the left movement event.
+    /// </summary>
     public event SimpleFighterDelegateEvent LeftEvent;
+    
     /// <summary>
     /// Invokes the left movement event.
     /// </summary>
@@ -43,7 +47,11 @@ public class FighterBase : MonoBehaviour
         if(debug) Debug.Log("Left event invoked.");
     }
 
+    /// <summary>
+    /// Declares the right movement event.
+    /// </summary>
     public event SimpleFighterDelegateEvent RightEvent;
+    
     /// <summary>
     /// Invokes the right movement event.
     /// </summary>
@@ -53,7 +61,11 @@ public class FighterBase : MonoBehaviour
         if(debug) Debug.Log("Right event invoked.");
     }
 
+    /// <summary>
+    /// Declares the jump event.
+    /// </summary>
     public event SimpleFighterDelegateEvent JumpEvent;
+    
     /// <summary>
     /// Invokes the jump event.
     /// </summary>
@@ -63,7 +75,11 @@ public class FighterBase : MonoBehaviour
         if(debug) Debug.Log("Jump event invoked.");
     }
 
+    /// <summary>
+    /// Declares the squat event.
+    /// </summary>
     public event SimpleFighterDelegateEvent SquatEvent;
+    
     /// <summary>
     /// Invokes the squat event.
     /// </summary>
@@ -73,8 +89,11 @@ public class FighterBase : MonoBehaviour
         if(debug) Debug.Log("Squat event invoked.");
     }
     
-    // Attack events for fighter characters.
+    /// <summary>
+    /// Declares the punch event.
+    /// </summary>
     public event SimpleFighterDelegateEvent PunchEvent;
+    
     /// <summary>
     /// Invokes the punch event.
     /// </summary>
@@ -84,7 +103,11 @@ public class FighterBase : MonoBehaviour
         if(debug) Debug.Log("Punch event invoked.");
     }
 
+    /// <summary>
+    /// Declares the combo event.
+    /// </summary>
     public event SimpleFighterDelegateEvent ComboEvent;
+    
     /// <summary>
     /// Invokes the combo event.
     /// </summary>
@@ -94,7 +117,11 @@ public class FighterBase : MonoBehaviour
         if(debug) Debug.Log("Combo event invoked.");
     }
 
+    /// <summary>
+    /// Declares the summon event.
+    /// </summary>
     public event SimpleFighterDelegateEvent SummonEvent;
+    
     /// <summary>
     /// Invokes the summon event.
     /// </summary>

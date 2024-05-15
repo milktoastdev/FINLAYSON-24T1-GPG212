@@ -11,25 +11,46 @@ using UnityEngine.UI;
 /// </summary>
 public class KeyTransition : MonoBehaviour
 {
-    public Dictionary<KeyCode, StateBase> transitionDatabase = new Dictionary<KeyCode, StateBase>();
+    /// <summary>
+    /// Dictionary to pair key inputs (keys) with their states (value).
+    /// </summary>
+    public Dictionary<KeyCode, StateBase> transitionDatabase;
 
+    /// <summary>
+    /// Refers to the state manager in the scene to call it's functions. The state manager could honestly just be a singleton.
+    /// </summary>
     public StateManager stateManager;
-    public FighterController fighterController;
+    
+    /// <summary>
+    /// A type of timed-state. Punches & combos would be one such example.
+    /// </summary>
     public StateBase timeoutState;
 
+    /// <summary>
+    /// Generic containers for a key being pressed or held.
+    /// </summary>
     public KeyCode keyPressed;
     public KeyCode keyHeld;
     
+    /// <summary>
+    /// Generic transition function.
+    /// </summary>
     public void Transition(StateBase targetState)
     {
         stateManager.ChangeState(targetState);
     }
     
+    /// <summary>
+    /// Generic timed transition function.
+    /// </summary>
     public void TimedTransition(StateBase targetState, Timer timer, StateBase defaultState)
     {
         // TODO: Set Time.Timescale to a fraction of a second for slowmo effect
     }
 
+    /// <summary>
+    /// HACK: Would assign key-state combinations to the dictionary declared above.
+    /// </summary>
     private void Awake()
     {
         // TODO: Add states to dictionary.
@@ -53,18 +74,7 @@ public class KeyTransition : MonoBehaviour
             Transition(transitionDatabase[keyHeld]);
         }
     }
-    // timeout for combos
-    // punches as states become iterations of each other
-    // punch
-    // punch (1) --> punch again fast enough? whomp whomp back to idle
-    // states set a whole game object true or false as opposed to just a component
-    // GOs are children of statemanager
     
-    // duck
-    // punch
-    // uppercut
-    // do these and show cam WITH transition (if statements & timers!)
-    
-    // TRANSITIONS!
-    // Example: SQUAT can go to left, right and idle depending on the input.
+    // TODO: States are child GO's of the StateManager GO.
+    // TODO: Entire states are toggled on and off this way instead of just their scripts.
 }
